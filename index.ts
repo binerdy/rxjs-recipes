@@ -1,9 +1,9 @@
-import './style.css';
+import { of } from 'rxjs';
+import { RequestBuffer } from './recipe/request-buffer';
 
-import { of, map } from 'rxjs';
-
-of('World')
-  .pipe(map((name) => `Hello, ${name}!`))
-  .subscribe(console.log);
-
-// Open the console in the bottom right to see results.
+const requestBuffer = new RequestBuffer(
+  {
+    test1: of<string>('data'),
+  },
+  { buffer: 1, retry: 0 }
+);
